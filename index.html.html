@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dra. Ana Lima | Nutricionista — Emagrecimento Feminino</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #FAF5EE;
+      --rose:     #C8856A;
+      --rose-lt:  #E8B4A2;
+      --rose-dk:  #9A5A42;
+      --sage:     #7D9B85;
+      --sage-lt:  #B8CCBC;
+      --brown:    #2C1A0E;
+      --warm-mid: #6B4F3A;
+      --gold:     #C9A96E;
+      --white:    #FFFDF9;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream);
+      color: var(--brown);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 5vw;
+      background: transparent;
+      transition: background .4s, box-shadow .4s;
+    }
+    nav.scrolled {
+      background: rgba(250,245,238,.94);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 24px rgba(44,26,14,.06);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; font-weight: 600; letter-spacing: .04em;
+      color: var(--brown); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.4rem; list-style: none; }
+    .nav-links a {
+      font-size: .78rem; font-weight: 500; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--warm-mid); text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--rose); }
+    .nav-cta {
+      background: var(--rose); color: var(--white) !important;
+      padding: .55rem 1.5rem; border-radius: 40px;
+      transition: background .2s !important;
+    }
+    .nav-cta:hover { background: var(--rose-dk) !important; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 7rem 5vw 4rem;
+      position: relative; overflow: hidden;
+    }
+
+    /* mesh background */
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 80% 30%, rgba(200,133,106,.18) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 80% at 10% 80%, rgba(125,155,133,.14) 0%, transparent 65%),
+        radial-gradient(ellipse 80% 50% at 50% 0%,  rgba(201,169,110,.10) 0%, transparent 60%);
+    }
+
+    /* decorative blob */
+    .hero-blob {
+      position: absolute; right: -6vw; top: 50%; transform: translateY(-50%);
+      width: 56vw; max-width: 820px; aspect-ratio: 1;
+      background: radial-gradient(ellipse 90% 100% at 60% 40%,
+        rgba(200,133,106,.22) 0%,
+        rgba(125,155,133,.14) 50%,
+        transparent 80%);
+      border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+      animation: morphBlob 10s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+    @keyframes morphBlob {
+      from { border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%; }
+      to   { border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%; }
+    }
+
+    .hero-text { position: relative; z-index: 1; }
+
+    .hero-tag {
+      display: inline-block; margin-bottom: 1.5rem;
+      font-size: .72rem; font-weight: 600; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--rose);
+      padding: .35rem 1.1rem; border: 1px solid var(--rose-lt);
+      border-radius: 40px; background: rgba(200,133,106,.07);
+      animation: fadeUp .7s ease both;
+    }
+
+    .hero-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.6rem, 5.5vw, 5.2rem);
+      font-weight: 300; line-height: 1.12; letter-spacing: -.01em;
+      color: var(--brown);
+      animation: fadeUp .7s .15s ease both;
+    }
+    .hero-headline em {
+      font-style: italic; color: var(--rose); font-weight: 400;
+    }
+
+    .hero-sub {
+      margin-top: 1.6rem; max-width: 480px;
+      font-size: 1.05rem; font-weight: 300; line-height: 1.75;
+      color: var(--warm-mid);
+      animation: fadeUp .7s .3s ease both;
+    }
+
+    .hero-actions {
+      margin-top: 2.6rem; display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeUp .7s .45s ease both;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .6rem;
+      background: var(--rose); color: var(--white);
+      padding: .9rem 2.2rem; border-radius: 50px;
+      font-size: .9rem; font-weight: 500; letter-spacing: .04em;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: background .25s, transform .2s, box-shadow .25s;
+      box-shadow: 0 6px 28px rgba(200,133,106,.35);
+    }
+    .btn-primary:hover {
+      background: var(--rose-dk); transform: translateY(-2px);
+      box-shadow: 0 10px 36px rgba(200,133,106,.45);
+    }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: .5rem;
+      color: var(--warm-mid); font-size: .9rem; font-weight: 500;
+      text-decoration: none; padding: .9rem 1.4rem; border-radius: 50px;
+      border: 1px solid rgba(107,79,58,.2);
+      transition: border-color .2s, color .2s;
+    }
+    .btn-secondary:hover { border-color: var(--rose); color: var(--rose); }
+
+    .hero-stats {
+      margin-top: 3.5rem; display: flex; gap: 2.5rem; flex-wrap: wrap;
+      animation: fadeUp .7s .6s ease both;
+    }
+    .stat-item { display: flex; flex-direction: column; gap: .2rem; }
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem; font-weight: 600; color: var(--rose);
+      line-height: 1;
+    }
+    .stat-label { font-size: .74rem; font-weight: 500; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--warm-mid); }
+
+    /* hero image panel */
+    .hero-image-wrap {
+      position: relative; z-index: 1;
+      display: flex; justify-content: center; align-items: flex-end;
+      height: 80vh; min-height: 520px;
+      animation: fadeUp .8s .2s ease both;
+    }
+    .hero-photo-frame {
+      width: 100%; max-width: 420px; height: 88%;
+      border-radius: 50% 50% 48% 48% / 40% 40% 60% 60%;
+      overflow: hidden;
+      background: linear-gradient(160deg, var(--rose-lt) 0%, var(--sage-lt) 60%, var(--gold) 100%);
+      position: relative;
+      box-shadow: 0 30px 80px rgba(44,26,14,.15), 0 0 0 1px rgba(200,133,106,.2);
+    }
+    .hero-photo-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: flex-end;
+      padding-bottom: 2rem;
+    }
+    /* Illustrated silhouette via CSS */
+    .silhouette {
+      width: 56%; aspect-ratio: .55 / 1;
+      background: linear-gradient(175deg, rgba(154,90,66,.55) 0%, rgba(44,26,14,.7) 100%);
+      border-radius: 50% 50% 45% 45% / 35% 35% 55% 55%;
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    }
+    .hero-badge {
+      position: absolute; bottom: 2rem; right: -1.5rem;
+      background: var(--white); border-radius: 20px;
+      padding: 1rem 1.4rem;
+      box-shadow: 0 8px 32px rgba(44,26,14,.12);
+      display: flex; align-items: center; gap: .8rem;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .badge-icon { font-size: 1.8rem; }
+    .badge-text { display: flex; flex-direction: column; }
+    .badge-title { font-size: .72rem; font-weight: 600; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--warm-mid); }
+    .badge-val { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;
+      font-weight: 600; color: var(--brown); line-height: 1; }
+
+    /* leaf decoration */
+    .hero-leaf {
+      position: absolute; top: 12%; right: 10%;
+      width: 120px; opacity: .55;
+      animation: leafSway 6s ease-in-out infinite alternate;
+    }
+    @keyframes leafSway {
+      from { transform: rotate(-5deg); }
+      to   { transform: rotate(8deg); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 6rem 5vw; }
+    .section-tag {
+      font-size: .72rem; font-weight: 600; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--rose); margin-bottom: .8rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 400; line-height: 1.2; color: var(--brown);
+    }
+    .section-title em { font-style: italic; color: var(--rose); }
+    .divider {
+      width: 48px; height: 2px;
+      background: linear-gradient(90deg, var(--rose), var(--gold));
+      margin: 1.4rem 0 1.8rem;
+      border-radius: 2px;
+    }
+
+    /* ── SOBRE ── */
+    #sobre {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+      background: var(--white);
+    }
+    .sobre-img-wrap {
+      position: relative;
+    }
+    .sobre-img-box {
+      width: 100%; aspect-ratio: 3/4;
+      border-radius: 4px 120px 4px 120px;
+      background: linear-gradient(135deg, var(--sage-lt) 0%, var(--rose-lt) 100%);
+      display: flex; align-items: flex-end; justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(44,26,14,.12);
+    }
+    .sobre-deco {
+      position: absolute; top: -2rem; right: -2rem;
+      width: 180px; aspect-ratio: 1;
+      border: 2px solid var(--rose-lt); border-radius: 50%;
+      opacity: .4;
+    }
+    .sobre-deco2 {
+      position: absolute; bottom: -2rem; left: -2rem;
+      width: 120px; aspect-ratio: 1;
+      background: rgba(201,169,110,.15);
+      border-radius: 50%;
+    }
+    .cred-pill {
+      display: inline-flex; align-items: center; gap: .6rem;
+      background: var(--cream); border-radius: 50px;
+      padding: .5rem 1.1rem; margin-bottom: .6rem;
+      font-size: .8rem; font-weight: 500; color: var(--warm-mid);
+      border: 1px solid rgba(125,155,133,.3);
+    }
+    .cred-pill span:first-child { color: var(--sage); }
+    .sobre-text p {
+      font-size: 1.02rem; font-weight: 300; line-height: 1.82;
+      color: var(--warm-mid); margin-bottom: 1.2rem;
+    }
+
+    /* ── COMO FUNCIONA ── */
+    #como-funciona { text-align: center; }
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem; margin-top: 4rem;
+    }
+    .step-card {
+      background: var(--white); border-radius: 24px;
+      padding: 2.2rem 1.8rem;
+      border: 1px solid rgba(200,133,106,.12);
+      transition: transform .25s, box-shadow .25s;
+      position: relative; overflow: hidden;
+    }
+    .step-card::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(200,133,106,.06) 0%, transparent 60%);
+      opacity: 0; transition: opacity .3s;
+    }
+    .step-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(44,26,14,.1); }
+    .step-card:hover::after { opacity: 1; }
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem; font-weight: 300; color: rgba(200,133,106,.2);
+      line-height: 1; margin-bottom: .5rem;
+    }
+    .step-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .step-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 600; color: var(--brown);
+      margin-bottom: .6rem;
+    }
+    .step-desc { font-size: .88rem; font-weight: 300; line-height: 1.7; color: var(--warm-mid); }
+
+    /* ── RESULTADOS ── */
+    #resultados {
+      background: var(--brown); color: var(--cream);
+      position: relative; overflow: hidden;
+    }
+    #resultados::before {
+      content: '';
+      position: absolute; top: -30%; right: -10%;
+      width: 60%; aspect-ratio: 1;
+      background: radial-gradient(circle, rgba(200,133,106,.15) 0%, transparent 70%);
+    }
+    .resultados-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    .resultados-inner .section-title { color: var(--cream); }
+    .resultados-inner .section-tag { color: var(--rose-lt); }
+    .resultados-inner .divider { background: linear-gradient(90deg, var(--rose-lt), var(--gold)); }
+    .resultados-inner p {
+      font-size: 1.02rem; font-weight: 300; line-height: 1.8;
+      color: rgba(250,245,238,.65); margin-bottom: 2rem;
+    }
+    .depoimentos { display: flex; flex-direction: column; gap: 1.4rem; }
+    .depo-card {
+      background: rgba(255,253,249,.06); border-radius: 18px;
+      padding: 1.6rem; border: 1px solid rgba(200,133,106,.18);
+      transition: background .2s;
+    }
+    .depo-card:hover { background: rgba(255,253,249,.1); }
+    .depo-stars { color: var(--gold); font-size: .9rem; margin-bottom: .6rem; }
+    .depo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-style: italic; font-weight: 300;
+      line-height: 1.65; color: var(--cream); margin-bottom: .9rem;
+    }
+    .depo-author { display: flex; align-items: center; gap: .7rem; }
+    .depo-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--rose-lt), var(--sage-lt));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .depo-name { font-size: .82rem; font-weight: 500; color: var(--rose-lt); }
+    .depo-result { font-size: .75rem; font-weight: 300; color: rgba(250,245,238,.5); }
+
+    /* ── PLANOS ── */
+    #planos { text-align: center; background: var(--white); }
+    .plans-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem; margin-top: 4rem; align-items: start;
+    }
+    .plan-card {
+      border-radius: 28px; padding: 2.5rem 2rem;
+      border: 1px solid rgba(200,133,106,.15);
+      text-align: left; position: relative; overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .plan-card:hover { transform: translateY(-6px); }
+    .plan-card.featured {
+      background: var(--rose); color: var(--white);
+      border-color: transparent;
+      box-shadow: 0 20px 60px rgba(200,133,106,.4);
+    }
+    .plan-card:not(.featured) { background: var(--cream); }
+    .plan-tag {
+      font-size: .68rem; font-weight: 600; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1rem; display: block;
+    }
+    .plan-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; font-weight: 600; color: inherit;
+      margin-bottom: .4rem;
+    }
+    .plan-card:not(.featured) .plan-name { color: var(--brown); }
+    .plan-price {
+      margin: 1.2rem 0;
+      display: flex; align-items: baseline; gap: .3rem;
+    }
+    .price-currency { font-size: .9rem; font-weight: 500; color: inherit; opacity: .8; }
+    .price-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem; font-weight: 600; line-height: 1;
+    }
+    .plan-card:not(.featured) .price-val { color: var(--rose); }
+    .price-period { font-size: .8rem; opacity: .6; }
+    .plan-divider { height: 1px; background: rgba(255,255,255,.2); margin: 1.4rem 0; }
+    .plan-card:not(.featured) .plan-divider { background: rgba(44,26,14,.08); }
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: .7rem; }
+    .plan-features li {
+      display: flex; align-items: center; gap: .6rem;
+      font-size: .88rem; font-weight: 300; color: inherit;
+    }
+    .plan-card:not(.featured) .plan-features li { color: var(--warm-mid); }
+    .feat-check { color: var(--gold); font-size: 1rem; flex-shrink: 0; }
+    .plan-card.featured .feat-check { color: rgba(255,255,255,.8); }
+    .plan-btn {
+      display: block; width: 100%; text-align: center;
+      margin-top: 2rem; padding: .9rem; border-radius: 50px;
+      font-size: .88rem; font-weight: 500; letter-spacing: .04em;
+      text-decoration: none; cursor: pointer; border: none;
+      transition: background .2s, transform .2s;
+    }
+    .plan-card.featured .plan-btn {
+      background: var(--white); color: var(--rose);
+    }
+    .plan-card.featured .plan-btn:hover {
+      background: var(--cream); transform: translateY(-1px);
+    }
+    .plan-card:not(.featured) .plan-btn {
+      background: var(--rose); color: var(--white);
+    }
+    .plan-card:not(.featured) .plan-btn:hover { background: var(--rose-dk); }
+    .popular-ribbon {
+      position: absolute; top: 1.2rem; right: 1.2rem;
+      background: var(--gold); color: var(--brown);
+      font-size: .65rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; padding: .3rem .8rem; border-radius: 30px;
+    }
+
+    /* ── FAQ ── */
+    #faq { max-width: 780px; margin: 0 auto; }
+    #faq .section-title { text-align: center; }
+    #faq .divider { margin: 1.4rem auto 3rem; }
+    .faq-list { display: flex; flex-direction: column; gap: .8rem; }
+    .faq-item {
+      border: 1px solid rgba(200,133,106,.15);
+      border-radius: 16px; overflow: hidden;
+      background: var(--white);
+    }
+    .faq-q {
+      width: 100%; background: none; border: none; cursor: pointer;
+      padding: 1.4rem 1.6rem;
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: 'Jost', sans-serif; font-size: .95rem; font-weight: 500;
+      color: var(--brown); text-align: left;
+    }
+    .faq-q:hover { color: var(--rose); }
+    .faq-icon { font-size: 1.2rem; color: var(--rose); transition: transform .3s; flex-shrink: 0; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height .4s ease, padding .3s;
+      font-size: .9rem; font-weight: 300; line-height: 1.8;
+      color: var(--warm-mid); padding: 0 1.6rem;
+    }
+    .faq-item.open .faq-a { max-height: 300px; padding: 0 1.6rem 1.4rem; }
+
+    /* ── CTA FINAL ── */
+    #cta-final {
+      text-align: center;
+      background: linear-gradient(135deg, var(--rose-lt) 0%, var(--sage-lt) 60%, var(--gold) 100%);
+      position: relative; overflow: hidden;
+    }
+    #cta-final::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    #cta-final .section-title { color: var(--brown); position: relative; z-index: 1; }
+    #cta-final p {
+      font-size: 1.1rem; font-weight: 300; color: var(--warm-mid);
+      max-width: 540px; margin: 1.2rem auto 2.5rem; line-height: 1.75;
+      position: relative; z-index: 1;
+    }
+    #cta-final .btn-primary {
+      position: relative; z-index: 1; font-size: 1rem; padding: 1.1rem 2.8rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--brown); color: rgba(250,245,238,.6);
+      padding: 3rem 5vw;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1.5rem;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-weight: 600; color: var(--cream);
+    }
+    .footer-links { display: flex; gap: 1.8rem; flex-wrap: wrap; }
+    .footer-links a {
+      font-size: .78rem; font-weight: 400; letter-spacing: .08em;
+      text-transform: uppercase; color: rgba(250,245,238,.5);
+      text-decoration: none; transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--rose-lt); }
+    .footer-copy { font-size: .76rem; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      #hero { grid-template-columns: 1fr; padding-top: 6rem; }
+      .hero-image-wrap { height: 55vw; max-height: 480px; }
+      #sobre { grid-template-columns: 1fr; }
+      .sobre-img-box { max-width: 380px; aspect-ratio: 1; }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .resultados-inner { grid-template-columns: 1fr; }
+      .plans-grid { grid-template-columns: 1fr; max-width: 480px; margin: 4rem auto 0; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      #hero { padding-top: 5rem; }
+      .hero-stats { gap: 1.5rem; }
+      .steps-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Floating WhatsApp */
+    .whatsapp-float {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: #25D366; display: flex; align-items: center; justify-content: center;
+      text-decoration: none; font-size: 1.6rem;
+      box-shadow: 0 6px 24px rgba(37,211,102,.45);
+      transition: transform .2s, box-shadow .2s;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 6px 24px rgba(37,211,102,.45); }
+      50%  { box-shadow: 0 6px 40px rgba(37,211,102,.7); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a class="nav-logo" href="#">Dra. Ana Lima</a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#como-funciona">Método</a></li>
+    <li><a href="#resultados">Resultados</a></li>
+    <li><a href="#planos">Planos</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#cta-final" class="nav-cta">Agendar consulta</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-blob"></div>
+
+  <!-- SVG leaf decoration -->
+  <svg class="hero-leaf" viewBox="0 0 120 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M60 170 C60 170 10 130 10 80 C10 30 60 10 60 10 C60 10 110 30 110 80 C110 130 60 170 60 170Z" fill="rgba(125,155,133,.3)" />
+    <path d="M60 10 L60 170" stroke="rgba(125,155,133,.5)" stroke-width="1.5" stroke-dasharray="4 3"/>
+  </svg>
+
+  <div class="hero-text">
+    <span class="hero-tag">✦ Nutricionista Especialista em Emagrecimento</span>
+    <h1 class="hero-headline">
+      O seu corpo <em>mais leve</em><br>começa com a escolha<br>certa
+    </h1>
+    <p class="hero-sub">
+      Planos alimentares personalizados para mulheres que querem emagrecer com saúde, sem sofrimento e com resultados que duram.
+    </p>
+    <div class="hero-actions">
+      <a href="#cta-final" class="btn-primary">
+        <span>▶</span> Quero meu plano
+      </a>
+      <a href="#como-funciona" class="btn-secondary">
+        <span>↓</span> Como funciona
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-number">+1.200</span>
+        <span class="stat-label">Pacientes atendidas</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">98%</span>
+        <span class="stat-label">Taxa de satisfação</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">8 anos</span>
+        <span class="stat-label">De experiência</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-image-wrap">
+    <div class="hero-photo-frame">
+      <div class="hero-photo-placeholder">
+        <!-- Ilustração estilizada substituível por foto real -->
+        <svg width="100%" height="100%" viewBox="0 0 420 560" preserveAspectRatio="xMidYMax meet" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- body -->
+          <ellipse cx="210" cy="420" rx="85" ry="140" fill="rgba(154,90,66,.55)"/>
+          <!-- head -->
+          <circle cx="210" cy="240" r="72" fill="rgba(200,133,106,.7)"/>
+          <!-- hair -->
+          <path d="M138 240 C138 200 150 160 210 150 C270 160 282 200 282 240 L282 220 C282 160 256 130 210 125 C164 130 138 160 138 220Z" fill="rgba(44,26,14,.75)"/>
+          <!-- neck -->
+          <rect x="196" y="305" width="28" height="30" rx="6" fill="rgba(200,133,106,.7)"/>
+          <!-- plant leaves deco -->
+          <ellipse cx="70" cy="490" rx="35" ry="18" fill="rgba(125,155,133,.5)" transform="rotate(-30 70 490)"/>
+          <ellipse cx="50" cy="460" rx="28" ry="14" fill="rgba(125,155,133,.4)" transform="rotate(-50 50 460)"/>
+          <ellipse cx="350" cy="480" rx="30" ry="15" fill="rgba(125,155,133,.45)" transform="rotate(25 350 480)"/>
+        </svg>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <span class="badge-icon">🌿</span>
+      <span class="badge-text">
+        <span class="badge-title">Consulta online</span>
+        <span class="badge-val">Disponível</span>
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="sobre-img-wrap reveal">
+    <div class="sobre-deco"></div>
+    <div class="sobre-deco2"></div>
+    <div class="sobre-img-box">
+      <svg width="100%" height="100%" viewBox="0 0 320 420" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet" style="padding:1rem">
+        <circle cx="160" cy="120" r="65" fill="rgba(154,90,66,.5)"/>
+        <path d="M95 120 C95 88 110 60 160 54 C210 60 225 88 225 120 L225 106 C225 60 198 40 160 36 C122 40 95 60 95 106Z" fill="rgba(44,26,14,.7)"/>
+        <rect x="147" y="178" width="26" height="28" rx="5" fill="rgba(154,90,66,.5)"/>
+        <ellipse cx="160" cy="340" rx="75" ry="125" fill="rgba(125,155,133,.4)"/>
+        <ellipse cx="160" cy="340" rx="75" ry="125" fill="rgba(154,90,66,.35)"/>
+        <!-- stethoscope hint -->
+        <circle cx="160" cy="270" r="18" stroke="rgba(255,255,255,.6)" stroke-width="3" fill="none"/>
+        <path d="M150 255 C150 240 170 240 170 255" stroke="rgba(255,255,255,.6)" stroke-width="3" fill="none"/>
+        <!-- leaf -->
+        <ellipse cx="55" cy="380" rx="30" ry="14" fill="rgba(125,155,133,.5)" transform="rotate(-40 55 380)"/>
+        <ellipse cx="265" cy="370" rx="26" ry="12" fill="rgba(125,155,133,.45)" transform="rotate(35 265 370)"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="sobre-text reveal">
+    <p class="section-tag">Sobre mim</p>
+    <h2 class="section-title">Olá! Sou a Dra.<em> Ana Lima</em></h2>
+    <div class="divider"></div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.8rem">
+      <span class="cred-pill"><span>★</span> CRN-3 · 12345-SP</span>
+      <span class="cred-pill"><span>🎓</span> Mestre em Nutrição Clínica</span>
+      <span class="cred-pill"><span>🏅</span> Especialista em Comportamento Alimentar</span>
+    </div>
+
+    <p>Sou nutricionista clínica com 8 anos de experiência dedicada exclusivamente ao universo feminino. Sei que cada mulher tem um corpo único, uma rotina diferente e uma história que vai muito além do que o espelho mostra.</p>
+    <p>Minha abordagem vai além das calorias: une evidência científica com escuta ativa, flexibilidade e muita empatia. Porque emagrecer não precisa — e não deve — ser uma guerra contra você mesma.</p>
+    <p>Aqui você encontra um espaço seguro, sem dietas restritivas absurdas, para construir uma relação saudável com a comida e alcançar o corpo que quer de forma sustentável.</p>
+
+    <a href="#cta-final" class="btn-primary" style="margin-top:1rem">Agendar minha consulta →</a>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section id="como-funciona">
+  <p class="section-tag reveal">Método exclusivo</p>
+  <h2 class="section-title reveal">Como funciona a <em>transformação</em></h2>
+  <div class="divider reveal" style="margin:1.4rem auto 0"></div>
+  <p class="reveal" style="max-width:560px;margin:.8rem auto 0;font-size:1rem;color:var(--warm-mid);font-weight:300;line-height:1.75">
+    Um processo estruturado e humanizado, pensado para encaixar na sua vida real — não o contrário.
+  </p>
+
+  <div class="steps-grid">
+    <div class="step-card reveal">
+      <div class="step-num">01</div>
+      <div class="step-icon">🔍</div>
+      <h3 class="step-title">Avaliação Completa</h3>
+      <p class="step-desc">Entendemos seu histórico, rotina, preferências, exames e objetivos. Nada de protocolo genérico — cada plano começa aqui.</p>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">02</div>
+      <div class="step-icon">📋</div>
+      <h3 class="step-title">Plano Personalizado</h3>
+      <p class="step-desc">Cardápio elaborado do zero para você: saboroso, viável e baseado em ciência. Sem restrições desnecessárias.</p>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">03</div>
+      <div class="step-icon">📲</div>
+      <h3 class="step-title">Acompanhamento Ativo</h3>
+      <p class="step-desc">Suporte via app ou WhatsApp, retornos periódicos e ajustes constantes conforme sua evolução.</p>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">04</div>
+      <div class="step-icon">🌟</div>
+      <h3 class="step-title">Resultados Duradouros</h3>
+      <p class="step-desc">Mais do que um número na balança: energia, autoestima e uma nova relação com a comida que fica para sempre.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTADOS -->
+<section id="resultados">
+  <div class="resultados-inner">
+    <div class="reveal">
+      <p class="section-tag">Depoimentos reais</p>
+      <h2 class="section-title">Elas <em>transformaram</em> suas vidas</h2>
+      <div class="divider"></div>
+      <p>Cada resultado é único — assim como cada paciente. Veja o que dizem algumas das mulheres que escolheram cuidar de si com acompanhamento profissional.</p>
+      <div style="display:flex;gap:2.5rem;flex-wrap:wrap">
+        <div>
+          <div class="stat-number" style="color:var(--rose-lt);font-family:'Cormorant Garamond',serif;font-size:2.4rem">−18 kg</div>
+          <div class="stat-label" style="color:rgba(250,245,238,.5)">Maior resultado em 6 meses</div>
+        </div>
+        <div>
+          <div class="stat-number" style="color:var(--rose-lt);font-family:'Cormorant Garamond',serif;font-size:2.4rem">4,9 ★</div>
+          <div class="stat-label" style="color:rgba(250,245,238,.5)">Avaliação média</div>
+        </div>
+      </div>
+    </div>
+    <div class="depoimentos">
+      <div class="depo-card reveal">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"Tentei de tudo antes. Com a Dra. Ana aprendi que emagrecer pode ser prazeroso. Perdi 12 kg em 4 meses e hoje me sinto outra pessoa."</p>
+        <div class="depo-author">
+          <div class="depo-avatar">🌸</div>
+          <div>
+            <div class="depo-name">Mariana S., 34 anos</div>
+            <div class="depo-result">−12 kg em 4 meses</div>
+          </div>
+        </div>
+      </div>
+      <div class="depo-card reveal">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"Depois da gravidez achei que nunca voltaria ao meu peso. A Dra. Ana me deu um plano realista e o suporte que eu precisava. Resultado incrível!"</p>
+        <div class="depo-author">
+          <div class="depo-avatar">🌺</div>
+          <div>
+            <div class="depo-name">Fernanda R., 29 anos</div>
+            <div class="depo-result">−9 kg pós-parto</div>
+          </div>
+        </div>
+      </div>
+      <div class="depo-card reveal">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"O diferencial é o acompanhamento próximo e humano. Nunca me senti sozinha no processo. Hoje perdi 15 kg e parei com 3 medicamentos!"</p>
+        <div class="depo-author">
+          <div class="depo-avatar">🌷</div>
+          <div>
+            <div class="depo-name">Cláudia M., 47 anos</div>
+            <div class="depo-result">−15 kg e mais saúde</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANOS -->
+<section id="planos">
+  <p class="section-tag reveal">Investimento</p>
+  <h2 class="section-title reveal">Escolha o plano <em>ideal</em> para você</h2>
+  <div class="divider reveal" style="margin:1.4rem auto 0"></div>
+
+  <div class="plans-grid">
+    <div class="plan-card reveal">
+      <span class="plan-tag">✦ Essencial</span>
+      <div class="plan-name">Start</div>
+      <div class="plan-price">
+        <span class="price-currency">R$</span>
+        <span class="price-val" style="color:var(--rose)">297</span>
+        <span class="price-period">/mês</span>
+      </div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li><span class="feat-check">✓</span> Consulta inicial completa</li>
+        <li><span class="feat-check">✓</span> Plano alimentar personalizado</li>
+        <li><span class="feat-check">✓</span> 1 retorno mensal</li>
+        <li><span class="feat-check">✓</span> Lista de substituições</li>
+        <li><span class="feat-check">✓</span> Suporte via e-mail</li>
+      </ul>
+      <a href="#cta-final" class="plan-btn">Começar agora →</a>
+    </div>
+
+    <div class="plan-card featured reveal">
+      <span class="popular-ribbon">Mais popular</span>
+      <span class="plan-tag">✦ Mais escolhido</span>
+      <div class="plan-name">Transform</div>
+      <div class="plan-price">
+        <span class="price-currency">R$</span>
+        <span class="price-val">497</span>
+        <span class="price-period">/mês</span>
+      </div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li><span class="feat-check">✓</span> Tudo do plano Start</li>
+        <li><span class="feat-check">✓</span> 2 retornos mensais</li>
+        <li><span class="feat-check">✓</span> Suporte via WhatsApp</li>
+        <li><span class="feat-check">✓</span> Receitas exclusivas</li>
+        <li><span class="feat-check">✓</span> Análise de exames</li>
+        <li><span class="feat-check">✓</span> Relatório de evolução mensal</li>
+      </ul>
+      <a href="#cta-final" class="plan-btn">Quero transformar →</a>
+    </div>
+
+    <div class="plan-card reveal">
+      <span class="plan-tag">✦ Premium</span>
+      <div class="plan-name">Elite</div>
+      <div class="plan-price">
+        <span class="price-currency">R$</span>
+        <span class="price-val" style="color:var(--rose)">797</span>
+        <span class="price-period">/mês</span>
+      </div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li><span class="feat-check">✓</span> Tudo do plano Transform</li>
+        <li><span class="feat-check">✓</span> 4 retornos mensais</li>
+        <li><span class="feat-check">✓</span> Acompanhamento diário</li>
+        <li><span class="feat-check">✓</span> Consultoria de suplementação</li>
+        <li><span class="feat-check">✓</span> Plano de treino integrado</li>
+        <li><span class="feat-check">✓</span> Prioridade de atendimento</li>
+      </ul>
+      <a href="#cta-final" class="plan-btn">Quero o Elite →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="padding:6rem 5vw">
+  <p class="section-tag" style="text-align:center">Dúvidas frequentes</p>
+  <h2 class="section-title reveal">Suas perguntas, <em>respondidas</em></h2>
+  <div class="divider reveal"></div>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q">
+        As consultas são presenciais ou online?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Todas as consultas são realizadas de forma online, via videoconferência. Isso permite que você seja atendida de qualquer lugar do Brasil com total comodidade, sem deslocamento.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">
+        Preciso fazer exames antes da consulta?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Não é obrigatório, mas se você tiver exames recentes (até 6 meses), eles podem enriquecer muito a avaliação. Caso não tenha, posso orientá-la sobre quais solicitar durante a consulta.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">
+        Vou precisar cortar completamente o que eu gosto de comer?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Absolutamente não! Minha abordagem é baseada em flexibilidade e equilíbrio. O plano é pensado para encaixar nos seus hábitos e preferências, tornando o processo prazeroso e sustentável a longo prazo.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">
+        Em quanto tempo posso ver resultados?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Muitas pacientes relatam melhoras na energia e no bem-estar já na primeira semana. A perda de peso saudável varia de 0,5 a 1 kg por semana, mas o mais importante é que os resultados sejam duradouros.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">
+        O plano funciona para quem tem condições como hipotireoidismo, SOP ou diabetes?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Sim! Tenho ampla experiência com pacientes que possuem essas condições. O plano é sempre adaptado à sua realidade clínica, respeitando suas necessidades específicas e trabalhando em conjunto com seu médico quando necessário.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">
+        Como é feito o pagamento?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Aceito pagamento via PIX, cartão de crédito (em até 12x) ou boleto bancário. Após o agendamento, você receberá todas as instruções por e-mail.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section id="cta-final">
+  <p class="section-tag" style="color:var(--rose-dk)">Dê o primeiro passo</p>
+  <h2 class="section-title reveal">Pronta para se sentir<br><em>incrível</em> de dentro para fora?</h2>
+  <p class="reveal">
+    Agende sua consulta agora e dê início à transformação que você tanto merece. As vagas são limitadas para garantir acompanhamento individualizado.
+  </p>
+  <a href="#" class="btn-primary reveal">
+    🌿 Agendar minha consulta
+  </a>
+  <p class="reveal" style="margin-top:1.2rem;font-size:.82rem;color:var(--warm-mid)">
+    ✔ Atendimento 100% online &nbsp;·&nbsp; ✔ Satisfação garantida &nbsp;·&nbsp; ✔ Sem fidelidade
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Dra. Ana Lima · Nutricionista</div>
+  <div class="footer-links">
+    <a href="#">Instagram</a>
+    <a href="#">Política de Privacidade</a>
+    <a href="#">Contato</a>
+  </div>
+  <div class="footer-copy">© 2025 Dra. Ana Lima. Todos os direitos reservados.</div>
+</footer>
+
+<!-- WhatsApp float -->
+<a class="whatsapp-float" href="https://wa.me/5511999999999" target="_blank" title="Fale comigo no WhatsApp">💬</a>
+
+<script>
+  // Nav scroll effect
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
